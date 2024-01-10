@@ -1,13 +1,19 @@
-const container = document.getElementById("gridContainer")
-let rows = documnet.getElementById("gridRow")
+document.addEventListener("DOMContentLoaded", function () {
+    createBoard(32)
+    console.log("Hi")
+})
 
-function makeGrid(a) {
-    for (i = 0; i < (a * a); i++) {
-        let row = document.createElement("div")
-        container.appendChild(row).className = "gridRow"
+function createBoard(size) {
+    let board = document.querySelector(".board");
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let numDivs = size * size;
+
+    for (let i = 0; i < numDivs; i++) {
+        let div = document.createElement("div");
+        div.style.backgroundColor = "yellow";
+        board.insertAdjacentElement("beforeend", div);
     }
-    document.documentElement.style.setProperty("--rowNum", a)
-    document.documentElement.style.setProperty("--colNum", a)
-}
 
-makeGrid(10)
+}
